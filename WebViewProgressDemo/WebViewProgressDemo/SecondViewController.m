@@ -33,14 +33,16 @@
 {
     [super viewDidLoad];
 
+    [self.view addSubview:self.webView];
+    
     // 创建进度条
     YHWebViewProgressView *progressView = [[YHWebViewProgressView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.navigationController.navigationBar.frame), CGRectGetWidth(self.view.bounds), 4)];
     progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleBottomMargin;
     
-    [self.view addSubview:self.webView];
     [progressView useWkWebView:self.webView];
     
-    [self.webView addSubview:progressView];
+    // 添加到视图
+    [self.view addSubview:progressView];
     
     [self.webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
 }
