@@ -23,7 +23,6 @@
 {
     if (!_webView) {
         _webView = [[WKWebView alloc] initWithFrame:self.view.bounds];
-        _webView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         _webView.navigationDelegate = self;
     }
     return _webView;
@@ -34,6 +33,12 @@
     [super viewDidLoad];
 
     [self.view addSubview:self.webView];
+    
+    self.webView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.webView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor].active = YES;
+    [self.webView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
+    [self.webView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor].active = YES;
+    [self.webView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor].active = YES;
     
     // 创建进度条
     YHWebViewProgressView *progressView = [[YHWebViewProgressView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.navigationController.navigationBar.frame), CGRectGetWidth(self.view.bounds), 4)];
@@ -56,7 +61,7 @@
 {
     [super viewDidAppear:animated];
     
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://m.taobao.com"]]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://m.taobao.com"]]];
 }
 
 #pragma mark - WKNavigationDelegate

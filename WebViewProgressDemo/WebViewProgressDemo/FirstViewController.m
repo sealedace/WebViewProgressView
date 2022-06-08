@@ -45,7 +45,7 @@
 {
     [super viewDidAppear:animated];
     
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://m.taobao.com"]]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://m.taobao.com"]]];
 }
 
 #pragma mark - UIWebViewDelegate
